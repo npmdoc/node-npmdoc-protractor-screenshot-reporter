@@ -1,0 +1,359 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/swissmanu/protractor-screenshot-reporter">protractor-screenshot-reporter (v0.0.5)</a>
+</h1>
+<h4>Use the screenshot reporter to capture screenshots from your Selenium nodes after each executed Protractor test case.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.protractor-screenshot-reporter">module protractor-screenshot-reporter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.protractor-screenshot-reporter">
+            function <span class="apidocSignatureSpan"></span>protractor-screenshot-reporter
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.toString">
+            function <span class="apidocSignatureSpan">protractor-screenshot-reporter.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">protractor-screenshot-reporter.</span>util</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.protractor-screenshot-reporter.util">module protractor-screenshot-reporter.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.util.gatherDescriptions">
+            function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>gatherDescriptions
+            <span class="apidocSignatureSpan">(suite, soFar)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.util.generateGuid">
+            function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>generateGuid
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.util.storeMetaData">
+            function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>storeMetaData
+            <span class="apidocSignatureSpan">(metaData, file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.protractor-screenshot-reporter.util.storeScreenShot">
+            function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>storeScreenShot
+            <span class="apidocSignatureSpan">(data, file)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.protractor-screenshot-reporter" id="apidoc.module.protractor-screenshot-reporter">module protractor-screenshot-reporter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.protractor-screenshot-reporter" id="apidoc.element.protractor-screenshot-reporter.protractor-screenshot-reporter">
+        function <span class="apidocSignatureSpan"></span>protractor-screenshot-reporter
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ScreenshotReporter(options) {
+	options = options || {};
+
+	if(!options.baseDirectory || options.baseDirectory.length === 0) {
+		throw new Error('Please pass a valid base directory to store the ' +
+			'screenshots into.');
+	} else {
+		this.baseDirectory = options.baseDirectory;
+	}
+
+	this.pathBuilder = options.pathBuilder || defaultPathBuilder;
+	this.metaDataBuilder = options.metaDataBuilder || defaultMetaDataBuilder;
+	this.takeScreenShotsForSkippedSpecs =
+		options.takeScreenShotsForSkippedSpecs || false;
+	this.takeScreenShotsOnlyForFailedSpecs =
+		options.takeScreenShotsOnlyForFailedSpecs || false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.toString" id="apidoc.element.protractor-screenshot-reporter.toString">
+        function <span class="apidocSignatureSpan">protractor-screenshot-reporter.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * Returns:
+ *     (String) containing a guid
+ */
+function generateGuid() {
+var buf = new Uint16Array(8);
+buf = crypto.randomBytes(8);
+var S4 = function(num) {
+        var ret = num.<span class="apidocCodeKeywordSpan">toString</span>(16);
+        while(ret.length &lt; 4){
+                ret = "0"+ret;
+        }
+        return ret;
+};
+
+return (
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.protractor-screenshot-reporter.util" id="apidoc.module.protractor-screenshot-reporter.util">module protractor-screenshot-reporter.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.util.gatherDescriptions" id="apidoc.element.protractor-screenshot-reporter.util.gatherDescriptions">
+        function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>gatherDescriptions
+        <span class="apidocSignatureSpan">(suite, soFar)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function gatherDescriptions(suite, soFar) {
+	soFar.push(suite.description);
+
+	if(suite.parentSuite) {
+		return gatherDescriptions(suite.parentSuite, soFar);
+	} else {
+		return soFar;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	}
+	if(self.takeScreenShotsOnlyForFailedSpecs &amp;&amp; results.passed()) {
+		return;
+	}
+
+	browser.takeScreenshot().then(function (png) {
+		browser.getCapabilities().then(function (capabilities) {
+			var descriptions = util.<span class="apidocCodeKeywordSpan">gatherDescriptions</span>(
+					spec.suite
+					, [spec.description]
+				)
+
+
+				, baseName = self.pathBuilder(
+					spec
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.util.generateGuid" id="apidoc.element.protractor-screenshot-reporter.util.generateGuid">
+        function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>generateGuid
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function generateGuid() {
+    var buf = new Uint16Array(8);
+    buf = crypto.randomBytes(8);
+    var S4 = function(num) {
+            var ret = num.toString(16);
+            while(ret.length &lt; 4){
+                    ret = "0"+ret;
+            }
+            return ret;
+    };
+
+    return (
+            S4(buf[0])+S4(buf[1])+"-"+S4(buf[2])+"-"+S4(buf[3])+"-"+
+            S4(buf[4])+"-"+S4(buf[5])+S4(buf[6])+S4(buf[7])
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*                             in-depth information about the Selenium node
+*                             which executed the test case.
+*
+* Returns:
+*     (String) containing the built path
+*/
+function defaultPathBuilder(spec, descriptions, results, capabilities) {
+	return util.<span class="apidocCodeKeywordSpan">generateGuid</span>();
+}
+
+/** Function: defaultMetaDataBuilder
+* Uses passed information to generate a meta data object which can be saved
+* along with a screenshot.
+* You do not have to add the screenshots file path since this will be appended
+* automatially.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.util.storeMetaData" id="apidoc.element.protractor-screenshot-reporter.util.storeMetaData">
+        function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>storeMetaData
+        <span class="apidocSignatureSpan">(metaData, file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function storeMetaData(metaData, file) {
+	var json
+		, stream;
+
+	try {
+		json = JSON.stringify(metaData);
+		stream = fs.createWriteStream(file);
+
+		stream.write(json);
+		stream.end();
+	} catch(e) {
+		console.error('Could not save meta data for ' + screenShotFile);
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+			metaData.screenShotFile = screenShotFile;
+			mkdirp(directory, function(err) {
+				if(err) {
+					throw new Error('Could not create directory ' + directory);
+				} else {
+					util.storeScreenShot(png, screenShotPath);
+					util.<span class="apidocCodeKeywordSpan">storeMetaData</span>(metaData, metaDataPath);
+				}
+			});
+		});
+	});
+
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.protractor-screenshot-reporter.util.storeScreenShot" id="apidoc.element.protractor-screenshot-reporter.util.storeScreenShot">
+        function <span class="apidocSignatureSpan">protractor-screenshot-reporter.util.</span>storeScreenShot
+        <span class="apidocSignatureSpan">(data, file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function storeScreenShot(data, file) {
+	var stream = fs.createWriteStream(file);
+
+	stream.write(new Buffer(data, 'base64'));
+	stream.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+			metaData.screenShotFile = screenShotFile;
+			mkdirp(directory, function(err) {
+				if(err) {
+					throw new Error('Could not create directory ' + directory);
+				} else {
+					util.<span class="apidocCodeKeywordSpan">storeScreenShot</span>(png, screenShotPath);
+					util.storeMetaData(metaData, metaDataPath);
+				}
+			});
+		});
+	});
+
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
